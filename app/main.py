@@ -1,5 +1,3 @@
-import os
-
 from fastapi import FastAPI, Request, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -7,8 +5,6 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
-
-from dotenv import load_dotenv
 
 from .routers import user, auth, logout, forgot_password
 from .config import settings
