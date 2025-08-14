@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="{{url_for('static', path='css/app.css')}}" />
+  </head>
+  <body class="overflow-hidden">
+    {% extends "base.html" %} {% block content %}
+    <div class="bg-white min-h-screen">
+      <header class="absolute inset-x-0 top-0 z-50">
+        <nav aria-label="Global" class="flex items-center justify-between px-4">
+          <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <img src="{{url_for('assets', path='logo-3.png')}}" alt="" class="h-15 w-auto" />
+            </a>
+          </div>
+          {% if user %}
+          <div class="lg:flex lg:flex-1 lg:justify-end">
+            <a href="/logout" class="cursor-pointer text-sm/6 font-semibold text-gray-900 px-3 py-1 rounded hover:bg-gray-100 transition">Log out <span>&rarr;</span></a>
+          </div>
+          {% else %}
+          <div class="lg:flex lg:flex-1 lg:justify-end">
+            <a href="/signin" class="cursor-pointer text-sm/6 font-semibold text-gray-900 px-3 py-1 rounded hover:bg-gray-100 transition">Log in <span>&rarr;</span></a>
+          </div>
+          {% endif %}
+        </nav>
+      </header>
+
+      <div class="relative isolate px-3 pt-10 lg:px-8">
+        <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+          <div
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+            class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+          ></div>
+        </div>
+        <div class="mx-auto max-w-2xl py-25 sm:py-25 lg:py-25">
+          <div class="text-center">
+            <h1 class="text-5xl sm:text-7xl font-semibold tracking-tight text-balance text-gray-900">Make Your Image With AI Generation</h1>
+            <p class="mt-8 text-sm sm:text-xl/8 font-medium text-pretty text-gray-500">Your image input data remains safe</p>
+            <p class="text-sm font-medium text-pretty text-gray-500 sm:text-xl/8">We do not store any user inputs in our database</p>
+            <p class="text-sm font-medium text-pretty text-blue-500 sm:text-xl/8">Stable Diffusion ControlNet IPAdapter FaceID</p>
+            <div class="flex items-center justify-center gap-y-2 relative mt-8">
+              <a href="/signin" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >Try AI Generation</a
+              >
+            </div>
+          </div>
+        </div>
+        <div aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
+          <div
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+            class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+          ></div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>

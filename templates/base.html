@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{url_for('static', path='css/app.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='vendor/toastify.css')}}" />
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    <script type="text/javascript" src="{{url_for('static', path='vendor/toastify.js')}}"></script>
+
+    {% if message %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toast = Toastify({
+          text: "{{ message }}",
+          className: "info custom-session-toast",
+          duration: -1,
+          gravity: "top", 
+          position: "center", 
+          style: {
+            background: "linear-gradient(to right, #2196F3, #42A5F5)",
+            color: "white",
+            fontWeight: "bold",
+            textAlign: "center", // teks rata tengah
+            width: "250px",      // <-- lebar kotak
+            padding: "10px" // <-- atur jarak dalam kotak
+          },
+        });
+
+        toast.showToast();
+
+        function removeToastOnAction() {
+          const toastEl = document.querySelector(".custom-session-toast");
+          if (toastEl) {
+            toastEl.style.transition = "opacity 0.3s ease";
+            toastEl.style.opacity = "0";
+            setTimeout(() => toastEl.remove(), 300);
+          }
+          // Hapus event listener biar nggak kepanggil berkali-kali
+          document.removeEventListener("keydown", removeToastOnAction);
+          document.removeEventListener("click", removeToastOnAction);
+          document.removeEventListener("scroll", removeToastOnAction);
+        }
+
+        // Deteksi interaksi user
+        document.addEventListener("keydown", removeToastOnAction);
+        document.addEventListener("click", removeToastOnAction);
+        document.addEventListener("scroll", removeToastOnAction);
+      });
+    </script>
+    {% endif %}
+  </body>
+</html>
