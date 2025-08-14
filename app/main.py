@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, Request, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -6,7 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 
+from dotenv import load_dotenv
+
 from .routers import user, auth, logout, forgot_password
+from .config import settings
 from . import models, oauth2
 from .database import engine
 
@@ -16,8 +21,10 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
+secret_key_session = settings.secret_key_session
+
 app.add_middleware(GZipMiddleware)
-app.add_middleware(SessionMiddleware, secret_key="sadadsadedasd")
+app.add_middleware(SessionMiddleware, secret_key=secret_key_session)
 
 origins = ["*"]
 
